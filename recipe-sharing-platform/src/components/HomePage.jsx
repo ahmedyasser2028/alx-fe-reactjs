@@ -1,32 +1,13 @@
-import React, { useState, useEffect } from "react";
-import recipesData from "../data.json";
+import { Link } from "react-router-dom";
 
-const HomePage = () => {
-  const [recipes, setRecipes] = useState([]);
+// داخل return, عدّل div الوصفة:
 
-  useEffect(() => {
-    setRecipes(recipesData);
-  }, []);
-
-  return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold mb-6 text-center">Recipe Sharing Platform</h1>
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {recipes.map((recipe) => (
-          <div
-            key={recipe.id}
-            className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
-          >
-            <img src={recipe.image} alt={recipe.title} className="w-full h-40 object-cover" />
-            <div className="p-4">
-              <h2 className="font-semibold text-lg mb-2">{recipe.title}</h2>
-              <p className="text-gray-600 text-sm">{recipe.summary}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+<Link to={`/recipe/${recipe.id}`}>
+  <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+    <img src={recipe.image} alt={recipe.title} className="w-full h-40 object-cover" />
+    <div className="p-4">
+      <h2 className="font-semibold text-lg mb-2">{recipe.title}</h2>
+      <p className="text-gray-600 text-sm">{recipe.summary}</p>
     </div>
-  );
-};
-
-export default HomePage;
+  </div>
+</Link>
