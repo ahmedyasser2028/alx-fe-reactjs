@@ -3,17 +3,22 @@ import React, { useState } from "react";
 const AddRecipeForm = () => {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
-  const [steps, setSteps] = useState(""); // renamed from instructions
+  const [steps, setSteps] = useState(""); 
   const [errors, setErrors] = useState({});
+
+  // دالة التحقق
+  const validate = () => {
+    const validationErrors = {};
+    if (!title.trim()) validationErrors.title = "Title is required";
+    if (!ingredients.trim()) validationErrors.ingredients = "Ingredients are required";
+    if (!steps.trim()) validationErrors.steps = "Steps are required";
+    return validationErrors;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const validationErrors = {};
-    if (!title.trim()) validationErrors.title = "Title is required";
-    if (!ingredients.trim()) validationErrors.ingredients = "Ingredients are required";
-    if (!steps.trim()) validationErrors.steps = "Steps are required"; // renamed
-
+    const validationErrors = validate(); // استدعاء الدالة
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
