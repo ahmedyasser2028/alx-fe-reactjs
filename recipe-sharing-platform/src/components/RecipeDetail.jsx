@@ -15,16 +15,25 @@ const RecipeDetail = () => {
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4">{recipe.title}</h1>
-      <img src={recipe.image} alt={recipe.title} className="mb-4 rounded" />
-      <h2 className="text-xl font-semibold mb-2">Ingredients:</h2>
-      <ul className="list-disc ml-6 mb-4">
-        {recipe.ingredients.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
-      <h2 className="text-xl font-semibold mb-2">Instructions:</h2>
-      <p>{recipe.instructions}</p> {/* <--- لازم يكون موجود */}
+      {/* Card with shadow */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h1 className="text-3xl font-bold mb-4">{recipe.title}</h1>
+        <img
+          src={recipe.image}
+          alt={recipe.title}
+          className="mb-4 rounded shadow-md"
+        />
+
+        <h2 className="text-xl font-semibold mb-2">Ingredients:</h2>
+        <ul className="list-disc ml-6 mb-4">
+          {recipe.ingredients.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+
+        <h2 className="text-xl font-semibold mb-2">Instructions:</h2>
+        <p>{recipe.instructions}</p>
+      </div>
     </div>
   );
 };
